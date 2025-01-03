@@ -40,7 +40,7 @@ export default function EmployeeDetails() {
     useEffect(() => {
         const fetchEmployee = async () => {
             try {
-                const response = await axios.get(`http://localhost:8085/api/v1/employeeManager/employees/${employeeId}`);
+                const response = await axios.get(`http://52.228.61.110:8085/api/v1/employeeManager/employees/${employeeId}`);
                 setEmployee(response.data);
                 console.log(response);
             } catch (error) {

@@ -37,7 +37,7 @@ const Login = () => {
 
         try {
             // Send login request to the backend
-            const response = await axios.post('http://localhost:8085/api/v1/employeeManager/login', {
+            const response = await axios.post('http://52.228.61.110:8085/api/v1/employeeManager/login', {
                 email: email,
                 password: password,
             });
