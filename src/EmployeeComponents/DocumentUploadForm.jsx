@@ -58,7 +58,7 @@ const DocumentUploadForm = ({ formData, onNext, onBack, onCancel, onFormDataChan
         });
 
         try {
-            const response = await axios.post('http://4.224.244.129:8085/api/v1/employeeManager/add', formDataToSend, {
+            const response = await axios.post('http://localhost:8085/api/v1/employeeManager/add', formDataToSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 }
