@@ -126,7 +126,7 @@ pipeline {
                             // Ensure you have set up the Azure CLI plugin or other necessary Azure credentials
                             // Example: Using Azure CLI to deploy the ZIP file to Azure Web App
                             bat '''
-                            az webapp deploy --resource-group eshwar --name eshwar-test-02 --src-path dist.zip
+                            az webapp deploy --resource-group eshwar --name eshwar-test-02 --src-path build.zip
                             '''
                         }
                     }
