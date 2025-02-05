@@ -1,5 +1,11 @@
 pipeline {
     agent any
+
+    triggers {
+        // This trigger listens for GitHub push events to automatically start the pipeline
+        githubPush()
+    }
+
     environment {
         // Define the Node.js home directory
         NODE_HOME = 'C:\\Program Files\\nodejs' // Update this path based on your Node.js installation
