@@ -75,7 +75,7 @@ pipeline {
                     // Send email to manager notifying them about the approval request
                     emailext(
                         subject: "Approval Request for Deployment",
-                        body: <p>Dear Manager,</p>
+                        body:""" <p>Dear Manager,</p>
                                  <p>Please review the building logs and approve or reject the deployment for the app.</p>
                                  <p><a href="https://c180-115-99-175-167.ngrok-free.app/job/frontendCICD/">Approve Deployment</a></p>
                                  <p><a href="https://c180-115-99-175-167.ngrok-free.app/job/frontendCICD/">Reject Deployment</a></p>
