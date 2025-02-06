@@ -75,8 +75,12 @@ pipeline {
                     // Send email to manager notifying them about the approval request
                     emailext(
                         subject: "Approval Request for Deployment",
-                        body: """Please review the Building Logs and Approve or Reject the deployment for the app.
-                        Kindly Approve or Reject the Deployment via the Jenkins interface.""",
+                        body: <p>Dear Manager,</p>
+                                 <p>Please review the building logs and approve or reject the deployment for the app.</p>
+                                 <p><a href="https://c180-115-99-175-167.ngrok-free.app/job/frontendCICD/">Approve Deployment</a></p>
+                                 <p><a href="https://c180-115-99-175-167.ngrok-free.app/job/frontendCICD/">Reject Deployment</a></p>
+                                 <p>Kind Regards,</p>
+                                 <p>Your Jenkins Pipeline</p>""",
                         to: "eshwar@middlewaretalents.com",  // Manager's email
                         from: 'eshwar.bashabathini88@gmail.com',  // Your email (Gmail, if using SMTP correctly configured)
                         replyTo: 'eshwar.bashabathini88@gmail.com',  // Reply-to address
