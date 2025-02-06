@@ -77,8 +77,8 @@ pipeline {
                         subject: "Approval Request for Deployment",
                         body:""" <p>Dear Manager,</p>
                                  <p>Please review the building logs and approve or reject the deployment for the app.</p>
-                                 <p><a href="https://c180-115-99-175-167.ngrok-free.app/job/frontendCICD/${env.BUILD_NUMBER}/input/">Approve Deployment</a></p>
-                                 <p><a href="https://c180-115-99-175-167.ngrok-free.app/job/frontendCICD/${env.BUILD_NUMBER}/input/">Reject Deployment</a></p>
+                                 <button><a style="background-color: #4CAF50; color: white; padding: 10px 24px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 5px;" href="https://c180-115-99-175-167.ngrok-free.app/job/frontendCICD/${env.BUILD_NUMBER}/input/">Approve Deployment</a></button>
+                                 <button><a style="background-color: #f44336; color: white; padding: 10px 24px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 5px;"  href="https://c180-115-99-175-167.ngrok-free.app/job/frontendCICD/${env.BUILD_NUMBER}/input/">Reject Deployment</a></button>
                                  <p>Kind Regards,</p>
                                  <p>Your Jenkins Pipeline</p>""",
                         to: "eshwar@middlewaretalents.com",  // Manager's email
