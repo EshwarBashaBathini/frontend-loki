@@ -106,7 +106,7 @@ pipeline {
                 }
             }
         } 
-          echo "This is build number ${env.BUILD_NUMBER}"
+          
         stage('Deploying to Azure ') {
             steps {
                 script {
