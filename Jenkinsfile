@@ -11,7 +11,7 @@ pipeline {
         NODE_HOME = 'C:\\Program Files\\nodejs' // Update this path based on your Node.js installation
         PATH = "${NODE_HOME};${env.PATH}"      // Add Node.js to the PATH and retain existing PATH
         AZURE_APP_NAME = 'eshwar-test-02' // Replace with your Azure Web App name
-        AZURE_RESOURCE_GROUP = 'eshwar' // Replace with your resource group
+        AZURE_RESOURCE_GROUP = 'eshwar' // Replace with your resource group 
         
         
         
