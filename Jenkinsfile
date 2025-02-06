@@ -76,7 +76,7 @@ pipeline {
                     emailext(
                         subject: "Approval Request for Deployment",
                         body:""" <p>Dear Manager,</p>
-                                 <p>Please review the building logs and approve or reject the deployment for the app.</p>
+                                 <p>Please review the building logs of Frontend Project and Approve or Reject the deployment for the app.</p>
                                  <p style="margin-bottom: 15px;">
                                     <a href="https://c180-115-99-175-167.ngrok-free.app/job/frontendCICD/${env.BUILD_NUMBER}/input/"
                                        style="background-color: #4CAF50; color: white; padding: 14px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 18px; border-radius: 8px; border: none; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: background-color 0.3s ease;">
