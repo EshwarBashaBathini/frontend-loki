@@ -77,8 +77,21 @@ pipeline {
                         subject: "Approval Request for Deployment",
                         body:""" <p>Dear Manager,</p>
                                  <p>Please review the building logs and approve or reject the deployment for the app.</p>
-                                 <button><a style="background-color: #4CAF50; color: white; padding: 10px 24px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 5px;" href="https://c180-115-99-175-167.ngrok-free.app/job/frontendCICD/${env.BUILD_NUMBER}/input/">Approve Deployment</a></button>
-                                 <button><a style="background-color: #f44336; color: white; padding: 10px 24px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 5px;"  href="https://c180-115-99-175-167.ngrok-free.app/job/frontendCICD/${env.BUILD_NUMBER}/input/">Reject Deployment</a></button>
+                                 <p>
+                                    <button 
+                                        onclick="window.location.href='https://c180-115-99-175-167.ngrok-free.app/job/frontendCICD/${env.BUILD_NUMBER}/input/'"
+                                        style="background-color: #4CAF50; color: white; padding: 14px 32px; text-align: center; font-size: 18px; border-radius: 8px; border: none; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: background-color 0.3s ease;">
+                                        Approve Deployment
+                                    </button>
+                                </p>
+                                <p>
+                                    <button 
+                                        onclick="window.location.href='https://c180-115-99-175-167.ngrok-free.app/job/frontendCICD/${env.BUILD_NUMBER}/input/'"
+                                        style="background-color: #f44336; color: white; padding: 14px 32px; text-align: center; font-size: 18px; border-radius: 8px; border: none; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: background-color 0.3s ease;">
+                                        Reject Deployment
+                                    </button>
+                                </p>
+
                                  <p>Kind Regards,</p>
                                  <p>Your Jenkins Pipeline</p>""",
                         to: "eshwar@middlewaretalents.com",  // Manager's email
