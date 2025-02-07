@@ -4,7 +4,7 @@ pipeline {
     triggers {
         githubPush()
     }  
-
+ 
     environment {
         NODE_HOME = 'C:\\Program Files\\nodejs'
         PATH = "${NODE_HOME};${env.PATH}"
