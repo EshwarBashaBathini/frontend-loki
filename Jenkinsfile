@@ -20,7 +20,7 @@ pipeline {
                 // Checkout the code from your Git repository and specify the branch
                 git branch: 'main', url: 'https://github.com/EshwarBashaBathini/frontend-loki.git', credentialsId: '2cfb3354-b0cc-4c3f-890f-b339640f685f'
             }
-            post {
+            script{
                 success {
                     // Send email to Git Checkout team after successful checkout
                     emailext(
@@ -171,7 +171,7 @@ pipeline {
         }
     }
 
-    post {
+    script {
         success {
             // Send email to Deployment team after successful deployment
             emailext(
@@ -200,7 +200,7 @@ pipeline {
         }
     }
 
-    post {
+    script {
         always {
             // Send email to frontend team with build result (success/failure)
             script {
