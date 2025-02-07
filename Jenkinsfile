@@ -56,7 +56,7 @@ pipeline {
                         emailext(
                             subject: subject,
                             body: body,
-                            to: "vamsi@middlewaretalents.com",
+                            to: "manikanta@middlewaretalents.com",
                             from: 'eshwar.bashabathini88@gmail.com',
                             replyTo: 'eshwar.bashabathini88@gmail.com',
                             attachLog: true
@@ -80,7 +80,7 @@ pipeline {
                                  <p>The dependencies have been successfully installed for the frontend project.</p>
                                  <p>Regards,</p>
                                  <p>Your Jenkins Pipeline</p>""",
-                        to: "team@middlewaretalents.com",
+                        to: "sivakrishna@middlewaretalents.com",
                         from: 'eshwar.bashabathini88@gmail.com',
                         replyTo: 'eshwar.bashabathini88@gmail.com'
                     )
@@ -92,7 +92,7 @@ pipeline {
                                  <p>The installation of dependencies has failed. Please check the build logs for more details.</p>
                                  <p>Regards,</p>
                                  <p>Your Jenkins Pipeline</p>""",
-                        to: "team@middlewaretalents.com",
+                        to: "sivakrishna@middlewaretalents.com",
                         from: 'eshwar.bashabathini88@gmail.com',
                         replyTo: 'eshwar.bashabathini88@gmail.com'
                     )
@@ -108,7 +108,7 @@ pipeline {
                         emailext(
                             subject: subject,
                             body: body,
-                            to: "vamsi@middlewaretalents.com",
+                            to: "sivakrishna@middlewaretalents.com",
                             from: 'eshwar.bashabathini88@gmail.com',
                             replyTo: 'eshwar.bashabathini88@gmail.com',
                             attachLog: true
@@ -327,7 +327,7 @@ pipeline {
                                  <p>The manager has approved the deployment for the frontend project.</p>
                                  <p>Regards,</p>
                                  <p>Your Jenkins Pipeline</p>""",
-                        to: "team@middlewaretalents.com",
+                        to: "eshwar@middlewaretalents.com",
                         from: 'eshwar.bashabathini88@gmail.com',
                         replyTo: 'eshwar.bashabathini88@gmail.com'
                     )
@@ -339,7 +339,7 @@ pipeline {
                                  <p>The manager has rejected the deployment for the frontend project.</p>
                                  <p>Regards,</p>
                                  <p>Your Jenkins Pipeline</p>""",
-                        to: "team@middlewaretalents.com",
+                        to: "eshwar@middlewaretalents.com",
                         from: 'eshwar.bashabathini88@gmail.com',
                         replyTo: 'eshwar.bashabathini88@gmail.com'
                     )
@@ -420,7 +420,7 @@ pipeline {
                         emailext(
                             subject: subject,
                             body: body,
-                            to: "vamsi@middlewaretalents.com",
+                            to: "dhanasekhar@middlewaretalents.com",
                             from: 'eshwar.bashabathini88@gmail.com',
                             replyTo: 'eshwar.bashabathini88@gmail.com',
                             attachLog: true
