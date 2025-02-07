@@ -23,6 +23,34 @@ pipeline {
                 // Checkout the code from your Git repository and specify the branch
                 git branch: 'main', url: 'https://github.com/EshwarBashaBathini/frontend-loki.git', credentialsId : '2cfb3354-b0cc-4c3f-890f-b339640f685f'
             }
+            post {
+                success {
+                    // Send email to Git Checkout team after successful checkout
+                    emailext(
+                        subject: "Git Checkout Success",
+                        body: """<p>Dear Git Checkout Team,</p>
+                                 <p>The repository has been successfully checked out for the frontend project.</p>
+                                 <p>Regards,</p>
+                                 <p>Your Jenkins Pipeline</p>""",
+                        to: "manikanta@middlewaretalents.com",  // Replace with the Git Checkout team's email
+                        from: 'eshwar.bashabathini88@gmail.com',
+                        replyTo: 'eshwar.bashabathini88@gmail.com'
+                    )
+                }
+                failure {
+                    // Send email to Git Checkout team after failed checkout
+                    emailext(
+                        subject: "Git Checkout Failure",
+                        body: """<p>Dear Git Checkout Team,</p>
+                                 <p>The Git checkout has failed. Please check the build logs for more details.</p>
+                                 <p>Regards,</p>
+                                 <p>Your Jenkins Pipeline</p>""",
+                        to: "manikanta@middlewaretalents.com",  // Replace with the Git Checkout team's email
+                        from: 'eshwar.bashabathini88@gmail.com',
+                        replyTo: 'eshwar.bashabathini88@gmail.com'
+                    )
+                }
+            }
         }
         stage('Install Dependencies') {
             steps {
@@ -149,9 +177,54 @@ pipeline {
         }
     }
     post {
+                success {
+                    // Send email to Deployment team after successful deployment
+                    emailext(
+                        subject: "Deployment Success",
+                        body: """<p>Dear Deployment Team,</p>
+                                 <p>The frontend application has been successfully deployed to Azure Web App.</p>
+                                 <p>Regards,</p>
+                                 <p>Your Jenkins Pipeline</p>""",
+                        to: "dhanasekhar@middlewaretalents.com",  // Replace with the Deployment team's email
+                        from: 'eshwar.bashabathini88@gmail.com',
+                        replyTo: 'eshwar.bashabathini88@gmail.com'
+                    )
+                }
+                failure {
+                    // Send email to Deployment team after failed deployment
+                    emailext(
+                        subject: "Deployment Failure",
+                        body: """<p>Dear Deployment Team,</p>
+                                 <p>The frontend deployment to Azure Web App has failed. Please check the build logs for more details.</p>
+                                 <p>Regards,</p>
+                                 <p>Your Jenkins Pipeline</p>""",
+                        to: "dhanasekhar@middlewaretalents.com",  // Replace with the Deployment team's email
+                        from: 'eshwar.bashabathini88@gmail.com',
+                        replyTo: 'eshwar.bashabathini88@gmail.com'
+                    )
+                }
+            }
+        }
+    }
+    post {
         always {
-            // Clean up or other post steps
-            echo 'Deployment process finished.'
+            // Send email to frontend team with build result (success/failure)
+            script {
+                def buildStatus = currentBuild.result ?: 'SUCCESS'  // Default to SUCCESS if not set
+                def subject = "Frontend Build - ${buildStatus}"
+                def body = buildStatus == 'SUCCESS' ? 
+                            "<p>Dear Frontend Team,</p><p>The frontend build was successful.</p>" :
+                            "<p>Dear Frontend Team,</p><p>The frontend build failed. Please check the logs for details.</p>"
+                
+                emailext(
+                    subject: subject,
+                    body: body,
+                    to: "vamsi@middlewaretalents.com",  // Replace with the actual email of the frontend team
+                    from: 'eshwar.bashabathini88@gmail.com',  // Your email
+                    replyTo: 'eshwar.bashabathini88@gmail.com',  // Reply-to address
+                    attachLog: true  // Optionally attaches the build log
+                )
+            }
         }
     }
 }
