@@ -303,7 +303,7 @@ pipeline {
                                 </p>
                                  <p>Kind Regards,</p>
                                  <p>Your Jenkins Pipeline</p>""",
-                        to: "anitha@middlewaretalents.com", 
+                        to: "mounika@middlewaretalents.com", 
                         from: 'eshwar.bashabathini88@gmail.com',
                         replyTo: 'eshwar.bashabathini88@gmail.com',
                         attachLog: true  
@@ -339,7 +339,7 @@ pipeline {
                                  <p>The manager has rejected the deployment for the frontend project.</p>
                                  <p>Regards,</p>
                                  <p>Your Jenkins Pipeline</p>""",
-                        to: "veda@middlewaretalents.com",
+                        to: "mounika@middlewaretalents.com",
                         from: 'eshwar.bashabathini88@gmail.com',
                         replyTo: 'eshwar.bashabathini88@gmail.com'
                     )
@@ -355,7 +355,7 @@ pipeline {
                         emailext(
                             subject: subject,
                             body: body,
-                            to: "veda@middlewaretalents.com",
+                            to: "anitha@middlewaretalents.com",
                             from: 'eshwar.bashabathini88@gmail.com',
                             replyTo: 'eshwar.bashabathini88@gmail.com',
                             attachLog: true
@@ -404,7 +404,7 @@ pipeline {
                                  <p>The frontend deployment to Azure Web App has failed. Please check the build logs for more details.</p>
                                  <p>Regards,</p>
                                  <p>Your Jenkins Pipeline</p>""",
-                        to: "dhanasekhar@middlewaretalents.com",
+                        to: "mounika@middlewaretalents.com",
                         from: 'eshwar.bashabathini88@gmail.com',
                         replyTo: 'eshwar.bashabathini88@gmail.com'
                     )
@@ -420,7 +420,7 @@ pipeline {
                         emailext(
                             subject: subject,
                             body: body,
-                            to: "dhanasekhar@middlewaretalents.com",
+                            to: "anitha@middlewaretalents.com",
                             from: 'eshwar.bashabathini88@gmail.com',
                             replyTo: 'eshwar.bashabathini88@gmail.com',
                             attachLog: true
@@ -451,7 +451,7 @@ pipeline {
                          <p>The frontend deployment to Azure Web App has failed. Please check the build logs for more details.</p>
                          <p>Regards,</p>
                          <p>Your Jenkins Pipeline</p>""",
-                to: "navya@middlewaretalents.com",
+                to: "anitha@middlewaretalents.com",
                 from: 'eshwar.bashabathini88@gmail.com',
                 replyTo: 'eshwar.bashabathini88@gmail.com'
             )
@@ -467,7 +467,7 @@ pipeline {
                 emailext(
                     subject: subject,
                     body: body,
-                    to: "navya@middlewaretalents.com",
+                    to: "anitha@middlewaretalents.com",
                     from: 'eshwar.bashabathini88@gmail.com',
                     replyTo: 'eshwar.bashabathini88@gmail.com',
                     attachLog: true
