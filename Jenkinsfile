@@ -22,30 +22,46 @@ pipeline {
             }
             post {
                 success {
-                    // Send email to Git Checkout team after successful checkout
                     emailext(
                         subject: "Git Checkout Success",
                         body: """<p>Dear Git Checkout Team,</p>
                                  <p>The repository has been successfully checked out for the frontend project.</p>
                                  <p>Regards,</p>
                                  <p>Your Jenkins Pipeline</p>""",
-                        to: "manikanta@middlewaretalents.com",  // Replace with the Git Checkout team's email
+                        to: "manikanta@middlewaretalents.com",  
                         from: 'eshwar.bashabathini88@gmail.com',
                         replyTo: 'eshwar.bashabathini88@gmail.com'
                     )
                 }
                 failure {
-                    // Send email to Git Checkout team after failed checkout
                     emailext(
                         subject: "Git Checkout Failure",
                         body: """<p>Dear Git Checkout Team,</p>
                                  <p>The Git checkout has failed. Please check the build logs for more details.</p>
                                  <p>Regards,</p>
                                  <p>Your Jenkins Pipeline</p>""",
-                        to: "manikanta@middlewaretalents.com",  // Replace with the Git Checkout team's email
+                        to: "manikanta@middlewaretalents.com",  
                         from: 'eshwar.bashabathini88@gmail.com',
                         replyTo: 'eshwar.bashabathini88@gmail.com'
                     )
+                }
+                always {
+                    script {
+                        def buildStatus = currentBuild.result ?: 'SUCCESS'
+                        def subject = "Git Checkout - ${buildStatus}"
+                        def body = buildStatus == 'SUCCESS' ?
+                            "<p>The Git Checkout was successful.</p>" :
+                            "<p>The Git Checkout failed. Please check the logs.</p>"
+
+                        emailext(
+                            subject: subject,
+                            body: body,
+                            to: "vamsi@middlewaretalents.com",
+                            from: 'eshwar.bashabathini88@gmail.com',
+                            replyTo: 'eshwar.bashabathini88@gmail.com',
+                            attachLog: true
+                        )
+                    }
                 }
             }
         }
@@ -56,12 +72,100 @@ pipeline {
                     bat 'npm install'
                 }
             }
+            post {
+                success {
+                    emailext(
+                        subject: "Install Dependencies Success",
+                        body: """<p>Dear Team,</p>
+                                 <p>The dependencies have been successfully installed for the frontend project.</p>
+                                 <p>Regards,</p>
+                                 <p>Your Jenkins Pipeline</p>""",
+                        to: "team@middlewaretalents.com",
+                        from: 'eshwar.bashabathini88@gmail.com',
+                        replyTo: 'eshwar.bashabathini88@gmail.com'
+                    )
+                }
+                failure {
+                    emailext(
+                        subject: "Install Dependencies Failure",
+                        body: """<p>Dear Team,</p>
+                                 <p>The installation of dependencies has failed. Please check the build logs for more details.</p>
+                                 <p>Regards,</p>
+                                 <p>Your Jenkins Pipeline</p>""",
+                        to: "team@middlewaretalents.com",
+                        from: 'eshwar.bashabathini88@gmail.com',
+                        replyTo: 'eshwar.bashabathini88@gmail.com'
+                    )
+                }
+                always {
+                    script {
+                        def buildStatus = currentBuild.result ?: 'SUCCESS'
+                        def subject = "Install Dependencies - ${buildStatus}"
+                        def body = buildStatus == 'SUCCESS' ?
+                            "<p>The dependencies installation was successful.</p>" :
+                            "<p>The dependencies installation failed. Please check the logs.</p>"
+
+                        emailext(
+                            subject: subject,
+                            body: body,
+                            to: "vamsi@middlewaretalents.com",
+                            from: 'eshwar.bashabathini88@gmail.com',
+                            replyTo: 'eshwar.bashabathini88@gmail.com',
+                            attachLog: true
+                        )
+                    }
+                }
+            }
         }
 
         stage('Build') {
             steps {
                 script {
                     bat 'npm run build'
+                }
+            }
+            post {
+                success {
+                    emailext(
+                        subject: "Build Success",
+                        body: """<p>Dear Team,</p>
+                                 <p>The frontend project has been successfully built.</p>
+                                 <p>Regards,</p>
+                                 <p>Your Jenkins Pipeline</p>""",
+                        to: "team@middlewaretalents.com",
+                        from: 'eshwar.bashabathini88@gmail.com',
+                        replyTo: 'eshwar.bashabathini88@gmail.com'
+                    )
+                }
+                failure {
+                    emailext(
+                        subject: "Build Failure",
+                        body: """<p>Dear Team,</p>
+                                 <p>The frontend build has failed. Please check the build logs for more details.</p>
+                                 <p>Regards,</p>
+                                 <p>Your Jenkins Pipeline</p>""",
+                        to: "team@middlewaretalents.com",
+                        from: 'eshwar.bashabathini88@gmail.com',
+                        replyTo: 'eshwar.bashabathini88@gmail.com'
+                    )
+                }
+                always {
+                    script {
+                        def buildStatus = currentBuild.result ?: 'SUCCESS'
+                        def subject = "Build - ${buildStatus}"
+                        def body = buildStatus == 'SUCCESS' ?
+                            "<p>The build was successful.</p>" :
+                            "<p>The build failed. Please check the logs.</p>"
+
+                        emailext(
+                            subject: subject,
+                            body: body,
+                            to: "vamsi@middlewaretalents.com",
+                            from: 'eshwar.bashabathini88@gmail.com',
+                            replyTo: 'eshwar.bashabathini88@gmail.com',
+                            attachLog: true
+                        )
+                    }
                 }
             }
         }
@@ -79,6 +183,50 @@ pipeline {
                     '''
                 }
             }
+            post {
+                success {
+                    emailext(
+                        subject: "Delete Old ZIP Success",
+                        body: """<p>Dear Team,</p>
+                                 <p>The old build.zip file has been successfully deleted.</p>
+                                 <p>Regards,</p>
+                                 <p>Your Jenkins Pipeline</p>""",
+                        to: "team@middlewaretalents.com",
+                        from: 'eshwar.bashabathini88@gmail.com',
+                        replyTo: 'eshwar.bashabathini88@gmail.com'
+                    )
+                }
+                failure {
+                    emailext(
+                        subject: "Delete Old ZIP Failure",
+                        body: """<p>Dear Team,</p>
+                                 <p>Failed to delete the old build.zip file. Please check the logs.</p>
+                                 <p>Regards,</p>
+                                 <p>Your Jenkins Pipeline</p>""",
+                        to: "team@middlewaretalents.com",
+                        from: 'eshwar.bashabathini88@gmail.com',
+                        replyTo: 'eshwar.bashabathini88@gmail.com'
+                    )
+                }
+                always {
+                    script {
+                        def buildStatus = currentBuild.result ?: 'SUCCESS'
+                        def subject = "Delete Old ZIP - ${buildStatus}"
+                        def body = buildStatus == 'SUCCESS' ?
+                            "<p>The old ZIP deletion was successful.</p>" :
+                            "<p>Failed to delete the old ZIP. Please check the logs.</p>"
+
+                        emailext(
+                            subject: subject,
+                            body: body,
+                            to: "vamsi@middlewaretalents.com",
+                            from: 'eshwar.bashabathini88@gmail.com',
+                            replyTo: 'eshwar.bashabathini88@gmail.com',
+                            attachLog: true
+                        )
+                    }
+                }
+            }
         }
 
         stage('Create ZIP File') {
@@ -87,23 +235,52 @@ pipeline {
                     bat 'powershell -Command "Compress-Archive -Path build\\* -DestinationPath build.zip"'
                 }
             }
+            post {
+                success {
+                    emailext(
+                        subject: "Create ZIP Success",
+                        body: """<p>Dear Team,</p>
+                                 <p>The build.zip file has been successfully created.</p>
+                                 <p>Regards,</p>
+                                 <p>Your Jenkins Pipeline</p>""",
+                        to: "team@middlewaretalents.com",
+                        from: 'eshwar.bashabathini88@gmail.com',
+                        replyTo: 'eshwar.bashabathini88@gmail.com'
+                    )
+                }
+                failure {
+                    emailext(
+                        subject: "Create ZIP Failure",
+                        body: """<p>Dear Team,</p>
+                                 <p>Failed to create the build.zip file. Please check the logs.</p>
+                                 <p>Regards,</p>
+                                 <p>Your Jenkins Pipeline</p>""",
+                        to: "team@middlewaretalents.com",
+                        from: 'eshwar.bashabathini88@gmail.com',
+                        replyTo: 'eshwar.bashabathini88@gmail.com'
+                    )
+                }
+                always {
+                    script {
+                        def buildStatus = currentBuild.result ?: 'SUCCESS'
+                        def subject = "Create ZIP - ${buildStatus}"
+                        def body = buildStatus == 'SUCCESS' ?
+                            "<p>The ZIP file creation was successful.</p>" :
+                            "<p>Failed to create the ZIP file. Please check the logs.</p>"
+
+                        emailext(
+                            subject: subject,
+                            body: body,
+                            to: "vamsi@middlewaretalents.com",
+                            from: 'eshwar.bashabathini88@gmail.com',
+                            replyTo: 'eshwar.bashabathini88@gmail.com',
+                            attachLog: true
+                        )
+                    }
+                }
+            }
         }
 
-        // stage('Manager Approval') {
-        //     steps {
-        //         script {
-        //             emailext(
-        //                 subject: "Approval Request for Deployment",
-        //                 body: """<p>Dear Manager,</p>
-        //                          <p>Please review the building logs of Frontend Project and Approve or Reject the deployment for the app.</p>
-        //                          <p>Kind Regards,</p>
-        //                          <p>Your Jenkins Pipeline</p>""",
-        //                 to: "eshwar@middlewaretalents.com",
-        //                 from: 'eshwar.bashabathini88@gmail.com',
-        //                 replyTo: 'eshwar.bashabathini88@gmail.com',
-        //                 attachLog: true
-        //             )
-        //         } 
         stage('Manager Approval') {
             steps {
                 script {
@@ -126,13 +303,12 @@ pipeline {
                                 </p>
                                  <p>Kind Regards,</p>
                                  <p>Your Jenkins Pipeline</p>""",
-                        to: "eshwar@middlewaretalents.com",  // Manager's email
-                        from: 'eshwar.bashabathini88@gmail.com',  // Your email (Gmail, if using SMTP correctly configured)
-                        replyTo: 'eshwar.bashabathini88@gmail.com',  // Reply-to address
-                        attachLog: true  // Optionally attaches the build log
+                        to: "eshwar@middlewaretalents.com", 
+                        from: 'eshwar.bashabathini88@gmail.com',
+                        replyTo: 'eshwar.bashabathini88@gmail.com',
+                        attachLog: true  
                     )
                 }
-
                 script {
                     def approval = input(
                         message: 'Do you approve the deployment to Azure?',
@@ -140,8 +316,51 @@ pipeline {
                             choice(name: 'Approval', choices: ['Approve', 'Reject'], description: 'Manager Approval')
                         ]
                     )
-
                     env.APPROVAL_STATUS = approval
+                }
+            }
+            post {
+                success {
+                    emailext(
+                        subject: "Manager Approval - Success",
+                        body: """<p>Dear Team,</p>
+                                 <p>The manager has approved the deployment for the frontend project.</p>
+                                 <p>Regards,</p>
+                                 <p>Your Jenkins Pipeline</p>""",
+                        to: "team@middlewaretalents.com",
+                        from: 'eshwar.bashabathini88@gmail.com',
+                        replyTo: 'eshwar.bashabathini88@gmail.com'
+                    )
+                }
+                failure {
+                    emailext(
+                        subject: "Manager Approval - Failure",
+                        body: """<p>Dear Team,</p>
+                                 <p>The manager has rejected the deployment for the frontend project.</p>
+                                 <p>Regards,</p>
+                                 <p>Your Jenkins Pipeline</p>""",
+                        to: "team@middlewaretalents.com",
+                        from: 'eshwar.bashabathini88@gmail.com',
+                        replyTo: 'eshwar.bashabathini88@gmail.com'
+                    )
+                }
+                always {
+                    script {
+                        def buildStatus = currentBuild.result ?: 'SUCCESS'
+                        def subject = "Manager Approval - ${buildStatus}"
+                        def body = buildStatus == 'SUCCESS' ?
+                            "<p>The manager approved the deployment.</p>" :
+                            "<p>The manager rejected the deployment.</p>"
+
+                        emailext(
+                            subject: subject,
+                            body: body,
+                            to: "vamsi@middlewaretalents.com",
+                            from: 'eshwar.bashabathini88@gmail.com',
+                            replyTo: 'eshwar.bashabathini88@gmail.com',
+                            attachLog: true
+                        )
+                    }
                 }
             }
         }
@@ -162,6 +381,50 @@ pipeline {
                             """
                         }
                         bat 'az webapp deploy --resource-group eshwar --name eshwar-test-02 --src-path build.zip'
+                    }
+                }
+            }
+            post {
+                success {
+                    emailext(
+                        subject: "Deployment Success",
+                        body: """<p>Dear Deployment Team,</p>
+                                 <p>The frontend application has been successfully deployed to Azure Web App.</p>
+                                 <p>Regards,</p>
+                                 <p>Your Jenkins Pipeline</p>""",
+                        to: "dhanasekhar@middlewaretalents.com",
+                        from: 'eshwar.bashabathini88@gmail.com',
+                        replyTo: 'eshwar.bashabathini88@gmail.com'
+                    )
+                }
+                failure {
+                    emailext(
+                        subject: "Deployment Failure",
+                        body: """<p>Dear Deployment Team,</p>
+                                 <p>The frontend deployment to Azure Web App has failed. Please check the build logs for more details.</p>
+                                 <p>Regards,</p>
+                                 <p>Your Jenkins Pipeline</p>""",
+                        to: "dhanasekhar@middlewaretalents.com",
+                        from: 'eshwar.bashabathini88@gmail.com',
+                        replyTo: 'eshwar.bashabathini88@gmail.com'
+                    )
+                }
+                always {
+                    script {
+                        def buildStatus = currentBuild.result ?: 'SUCCESS'
+                        def subject = "Frontend Deployment - ${buildStatus}"
+                        def body = buildStatus == 'SUCCESS' ?
+                            "<p>The frontend deployment was successful.</p>" :
+                            "<p>The frontend deployment failed. Please check the logs.</p>"
+
+                        emailext(
+                            subject: subject,
+                            body: body,
+                            to: "vamsi@middlewaretalents.com",
+                            from: 'eshwar.bashabathini88@gmail.com',
+                            replyTo: 'eshwar.bashabathini88@gmail.com',
+                            attachLog: true
+                        )
                     }
                 }
             }
