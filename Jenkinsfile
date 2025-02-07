@@ -89,19 +89,47 @@ pipeline {
             }
         }
 
+        // stage('Manager Approval') {
+        //     steps {
+        //         script {
+        //             emailext(
+        //                 subject: "Approval Request for Deployment",
+        //                 body: """<p>Dear Manager,</p>
+        //                          <p>Please review the building logs of Frontend Project and Approve or Reject the deployment for the app.</p>
+        //                          <p>Kind Regards,</p>
+        //                          <p>Your Jenkins Pipeline</p>""",
+        //                 to: "eshwar@middlewaretalents.com",
+        //                 from: 'eshwar.bashabathini88@gmail.com',
+        //                 replyTo: 'eshwar.bashabathini88@gmail.com',
+        //                 attachLog: true
+        //             )
+        //         } 
         stage('Manager Approval') {
             steps {
                 script {
+                    // Send email to manager notifying them about the approval request
                     emailext(
                         subject: "Approval Request for Deployment",
-                        body: """<p>Dear Manager,</p>
+                        body:""" <p>Dear Manager,</p>
                                  <p>Please review the building logs of Frontend Project and Approve or Reject the deployment for the app.</p>
+                                 <p style="margin-bottom: 15px;">
+                                    <a href="https://e722-136-232-205-158.ngrok-free.app/job/frontendCICD/${env.BUILD_NUMBER}/input/"
+                                       style="background-color: #4CAF50; color: white; padding: 14px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 18px; border-radius: 8px; border: none; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: background-color 0.3s ease;">
+                                       Approve Deployment
+                                    </a>
+                                </p>
+                                <p style="margin-top: 15px;">
+                                    <a href="https://e722-136-232-205-158.ngrok-free.app/job/frontendCICD/${env.BUILD_NUMBER}/input/"
+                                       style="background-color: #f44336; color: white; padding: 14px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 18px; border-radius: 8px; border: none; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: background-color 0.3s ease;">
+                                       Reject Deployment
+                                    </a>
+                                </p>
                                  <p>Kind Regards,</p>
                                  <p>Your Jenkins Pipeline</p>""",
-                        to: "eshwar@middlewaretalents.com",
-                        from: 'eshwar.bashabathini88@gmail.com',
-                        replyTo: 'eshwar.bashabathini88@gmail.com',
-                        attachLog: true
+                        to: "eshwar@middlewaretalents.com",  // Manager's email
+                        from: 'eshwar.bashabathini88@gmail.com',  // Your email (Gmail, if using SMTP correctly configured)
+                        replyTo: 'eshwar.bashabathini88@gmail.com',  // Reply-to address
+                        attachLog: true  // Optionally attaches the build log
                     )
                 }
 
