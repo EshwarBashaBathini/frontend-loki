@@ -3,7 +3,7 @@ pipeline {
 
     triggers {
         githubPush()
-    }
+    }  
 
     environment {
         NODE_HOME = 'C:\\Program Files\\nodejs'
