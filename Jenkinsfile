@@ -132,7 +132,7 @@ pipeline {
                                  <p>The frontend project has been successfully built.</p>
                                  <p>Regards,</p>
                                  <p>Your Jenkins Pipeline</p>""",
-                        to: "team@middlewaretalents.com",
+                        to: "lokesh@middlewaretalents.com",
                         from: 'eshwar.bashabathini88@gmail.com',
                         replyTo: 'eshwar.bashabathini88@gmail.com'
                     )
@@ -303,7 +303,7 @@ pipeline {
                                 </p>
                                  <p>Kind Regards,</p>
                                  <p>Your Jenkins Pipeline</p>""",
-                        to: "eshwar@middlewaretalents.com", 
+                        to: "lokesh@middlewaretalents.com", 
                         from: 'eshwar.bashabathini88@gmail.com',
                         replyTo: 'eshwar.bashabathini88@gmail.com',
                         attachLog: true  
@@ -327,7 +327,7 @@ pipeline {
                                  <p>The manager has approved the deployment for the frontend project.</p>
                                  <p>Regards,</p>
                                  <p>Your Jenkins Pipeline</p>""",
-                        to: "veda@middlewaretalents.com",
+                        to: "lokesh@middlewaretalents.com",
                         from: 'eshwar.bashabathini88@gmail.com',
                         replyTo: 'eshwar.bashabathini88@gmail.com'
                     )
@@ -392,7 +392,7 @@ pipeline {
                                  <p>The frontend application has been successfully deployed to Azure Web App.</p>
                                  <p>Regards,</p>
                                  <p>Your Jenkins Pipeline</p>""",
-                        to: "dhanasekhar@middlewaretalents.com",
+                        to: "anitha@middlewaretalents.com",
                         from: 'eshwar.bashabathini88@gmail.com',
                         replyTo: 'eshwar.bashabathini88@gmail.com'
                     )
